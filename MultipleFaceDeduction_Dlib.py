@@ -41,8 +41,8 @@ import sys
 
 import dlib
 
-img_files = ['D:/Projects/Python/SampleImages/Faces/1.jpg','D:/Projects/Python/SampleImages/Faces/2.jpg']
-
+# img_files = ['D:/Projects/Python/SampleImages/Faces/1.jpg','D:/Projects/Python/SampleImages/Faces/2.jpg']
+img_files = ['D:/Projects/Python/SampleImages/GroupFaces/2.jpg']
 detector = dlib.get_frontal_face_detector()
 win = dlib.image_window()
 
@@ -52,6 +52,7 @@ def dislay_image(img):
         win.add_overlay(dets)
         dlib.hit_enter_to_continue()
 
+faces = []
 for f in img_files:
         print("Processing file: {}".format(f))
         img = dlib.load_rgb_image(f)
@@ -64,7 +65,8 @@ for f in img_files:
         # where a negative value will return more detections and a positive value fewer.
         # Also, the idx tells you which of the face sub-detectors matched.  This can be
         # used to broadly identify faces in different orientations.
-        dets, scores, idx = detector.run(img, 1, .25)  # (image, times upsample the image, detection threshold confidence)
+        dets, scores, idx = detector.run(img, 2)
+        #dets, scores, idx = detector.run(img, 2, .5)  # (image, times upsample the image, detection threshold confidence)
         print(dets, scores, idx) 
         print("Number of faces detected: {}".format(len(dets)))
         for i, d in enumerate(dets):

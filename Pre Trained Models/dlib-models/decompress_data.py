@@ -1,6 +1,6 @@
 import bz2
 import os
-dirpath = 'D:\Projects\Python\Models Downloaded\dlib-models'
+dirpath = os.path.dirname(os.path.realpath(__file__))
 files = []
 for file in os.listdir(dirpath):
     if file.endswith(".bz2"):
